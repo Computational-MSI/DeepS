@@ -13,8 +13,7 @@ from mask_gen_color import gen_mask
 import imageio
 from model_unet_color import opt
 image_size = opt.imageSize
-k_value = [2]
-k_value = random.sample(k_value, 1)
+
 
 def normalization(datingDatamat):
     max_index = np.unravel_index(np.argmax(datingDatamat, axis=None), datingDatamat.shape)
