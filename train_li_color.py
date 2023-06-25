@@ -49,8 +49,8 @@ def weights_init(m):
 
 
 # paragram
-opt.netG='3_25/rec/0.8/[1,2,4,8,16]/netG_streetview.pth'
-opt.netD='3_25/rec/0.8/[1,2,4,8,16]/netlocalD.pth'
+opt.netG=''#for fine-tuning 3_25/rec/0.8/[1,2,4,8,16]/netG_streetview.pth
+opt.netD=''#for fine-tuning3_25/rec/0.8/[1,2,4,8,16]/netlocalD.pth
 opt.batchSize=8
 ngpu = int(opt.ngpu)
 nz = int(opt.nz)
@@ -100,7 +100,7 @@ fake_label = 0
 
 input_real = torch.FloatTensor(opt.batchSize, 3, opt.imageSize, opt.imageSize)
 input_cropped = torch.FloatTensor(opt.batchSize, 3, opt.imageSize, opt.imageSize)
-real_center = torch.FloatTensor(opt.batchSize, 3, opt.imageSize, opt.imageSize)
+
 
 one = torch.FloatTensor([1])
 
@@ -111,14 +111,14 @@ if opt.cuda:
     criterionL1.cuda()
     one = one.cuda()
     input_real, input_cropped, label = input_real.cuda(), input_cropped.cuda(), label.cuda()
-    real_center = real_center.cuda()
+  
 
 input_real = Variable(input_real)
 input_cropped = Variable(input_cropped)
 label = Variable(label)
 
 print(label.shape)
-real_center = Variable(real_center)
+
 Ms_generator = gen_mask(k_value,opt.batchSize,opt.imageSize, 0.8)
 
 
@@ -156,7 +156,7 @@ for epoch in range(resume_epoch, opt.niter):
         if opt.cuda:
             real_gpu = data.cuda()
             input_cropped = input_cropped.cuda()
-            real_center = real_center.cuda()
+         
 
         # train with real
         netD.zero_grad()
