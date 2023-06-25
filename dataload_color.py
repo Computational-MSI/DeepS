@@ -51,30 +51,4 @@ class TextileData(data.Dataset):
 
 
 
-#train_Dataset = np.array(TextileData(root='dataset/train'))
-#train_loader = DataLoader(dataset=train_Dataset, batch_size=64, shuffle=True)
 
-#for j in range(10):
-#    for i, batch in enumerate(train_loader):
-#        batch = np.squeeze(batch.numpy())
-#        print(batch)
-#        target = batch
-#        input = batch
-#        plt.figure()
-#        plt.imshow(np.array(input[0]))
-#        plt.show()
-#
-
-
-
-
-#Ms_generator = gen_mask(k_value, 64, image_size,0.2)
-
-#for j in range(100):
-#    for i, batch in enumerate(train_loader):
-#        batch = np.squeeze(batch.numpy())
-#        target = batch
-#        input = batch * next(Ms_generator)
-#        plt.figure()
-#        plt.imshow(np.squeeze(input[0]))
-#        plt.show()
